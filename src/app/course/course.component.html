@@ -1,0 +1,29 @@
+<form [formGroup]="courseForm" (ngSubmit)="submitForm(courseForm.value)">
+  <div class="form-group" [ngClass]="{'has-danger': courseForm.controls.courseName.touched && courseForm.controls.courseName.invalid}">
+    <label for="courseName">Course Name</label>
+    <input  type="text" class="form-control" id="courseName" formControlName="courseName" >
+    <div class="text-danger" *ngIf="courseForm.controls.courseName.touched && courseForm.controls.courseName.errors?.required"> Required Field </div>
+    <div class="text-danger" *ngIf="courseForm.controls.courseName.touched && courseForm.controls.courseName.errors?.minlength"> Min-length is {{courseForm.controls.courseName.errors.minlength.requiredLength}}</div>
+  </div>
+  <div class="form-group" [ngClass]="{'has-danger':courseForm.controls.category.touched && courseForm.controls.category.invalid}">
+    <label for="category">Category</label>
+    <select class="form-control" id="category" formControlName="category" >
+      <option [ngValue]="category" *ngFor="let category of categories"> {{category}}</option>
+    </select>
+    <div class="text-danger" *ngIf="courseForm.controls.category.touched && courseForm.controls.category.errors?.required"> Required Field </div>
+  </div>
+
+  <div class="form-group">
+
+
+
+        <input type="checkbox" formControlName="garantee">
+
+    <label class="form-check-label">30-day money-back garantee</label>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="courseForm.invalid">Submit</button>
+</form>
+
+

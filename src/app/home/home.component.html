@@ -1,0 +1,6 @@
+<h1 class="display-4"> Home Page </h1>
+
+<ul>
+  <li *ngFor="let archive of archives"> <a routerLinkActive="active" [routerLink]="['/archive', archive.year, archive.month]"> {{archive.year + '/' +archive.month}} </a></li>
+  <li> <a routerLinkActive="active" [routerLink]="['/followers']"> Followers </a></li>
+</ul>
